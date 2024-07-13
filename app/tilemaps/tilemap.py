@@ -6,6 +6,7 @@ class Tilemap:
         self.offset_y = 0
         self.speed = 2  # Velocidad de desplazamiento del tilemap
         self.tilemap = pyxel.tilemap(0)
+        self.steps_counter = 0
 
     def is_tile_solid(self, x, y):
         tile_x = (x + self.offset_x) // 8
@@ -23,9 +24,16 @@ class Tilemap:
                 return False
         return False
     
+    def level_end(self):
+        if self.steps_counter >= 976:
+            return True
+        else:
+            return False
+    
     def update(self, moving_right):
         if moving_right:
             self.offset_x = (self.offset_x + self.speed) % (self.tilemap.width * 8)  # Ajusta según el tamaño de tu tilemap
+            self.steps_counter += 1
 
     def draw(self):
         pyxel.bltm(0, 0, 0, self.offset_x, self.offset_y, pyxel.width, pyxel.height, colkey=3)

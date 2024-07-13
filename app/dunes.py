@@ -6,6 +6,7 @@ from tilemaps.tilemap import Tilemap
 
 class App:
     def __init__(self):
+        #extensión horizontal por nivel/tilemap 2048px, (0,63)
         pyxel.init(160, 144, title='Dunes Of Mediterranean Sea')
         pyxel.load('my_resource.pyxres')
 
@@ -24,6 +25,12 @@ class App:
         self.protagonist.update(self.tilemap)
 
         self.sun.update()
+
+        level_end = self.tilemap.level_end()
+
+        #Acá se acaba el nivel, por lo cual se debe cortar la ejecución y mostrar una pantalla que diga "Level Finished" o algo así
+        if level_end:
+            print('Level End')
 
         # Actualizar el fondo si el protagonista está en el centro y moviendose a la derecha
         if self.protagonist.x >= pyxel.width / 2 - self.protagonist.sprite.w / 2 and pyxel.btn(pyxel.KEY_RIGHT):
