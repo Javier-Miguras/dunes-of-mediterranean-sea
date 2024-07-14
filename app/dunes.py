@@ -25,7 +25,7 @@ class App:
         if pyxel.btnp(pyxel.KEY_ESCAPE):
             pyxel.quit()
 
-        if(self.tilemap.steps_counter >= self.level_width):
+        if(self.tilemap.steps_counter >= self.level_width - 36):
             self.level_end = True
 
         if(self.tilemap.steps_counter >= self.level_width - (pyxel.width / 2)):
