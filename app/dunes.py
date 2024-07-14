@@ -45,7 +45,6 @@ class App:
 
     def draw(self):
 
-        #Acá se acaba el nivel, por lo cual se debe cortar la ejecución y mostrar una pantalla que diga "Level Finished" o algo así
         if self.level_end:
             pyxel.cls(0)
             text = "Level Completed!"
