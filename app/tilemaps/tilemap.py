@@ -24,15 +24,13 @@ class Tilemap:
                 return False
         return False
     
-    def level_end(self):
-        if self.steps_counter >= 976:
-            return True
-        else:
-            return False
+    def steps_counter(self):
+        return self.steps_counter
     
-    def update(self, moving_right):
+    def update(self, moving_right, near_level_end = False):
         if moving_right:
-            self.offset_x = (self.offset_x + self.speed) % (self.tilemap.width * 8)  # Ajusta según el tamaño de tu tilemap
+            if(not near_level_end):
+                self.offset_x = (self.offset_x + self.speed) % (self.tilemap.width * 8)  # Ajusta según el tamaño de tu tilemap
             self.steps_counter += 1
 
     def draw(self):

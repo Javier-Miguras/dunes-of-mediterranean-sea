@@ -11,8 +11,8 @@ class Background:
         # Cargar sprite del fondo
         self.sprite = Sprite(0, 0, 0, self.sprite_width, 144, 3)
 
-    def update(self, moving_right):
-        if moving_right:
+    def update(self, moving_right, near_level_end = False):
+        if moving_right and not near_level_end:
             self.x = (self.x + self.speed) % self.sprite_width  # Desplazamiento del fondo
 
     def draw(self):

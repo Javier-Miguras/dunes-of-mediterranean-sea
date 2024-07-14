@@ -25,7 +25,7 @@ class Protagonist:
         self.walk_frame_duration = 3
         self.current_frame = 0
 
-    def update(self, tilemap):
+    def update(self, tilemap, walk_to_end = False):
         if pyxel.btnp(pyxel.KEY_UP) and (self.on_ground or self.over_tile):
             self.vy = self.jump_strength
             self.on_ground = False
@@ -41,7 +41,10 @@ class Protagonist:
             self.on_ground = True
 
         if pyxel.btn(pyxel.KEY_RIGHT):
-            if self.x < pyxel.width / 2 - self.sprite.w / 2:
+            if(not walk_to_end):
+                if self.x < pyxel.width / 2 - self.sprite.w / 2:
+                    self.x += self.speed
+            else:
                 self.x += self.speed
             self.flip_x = False
             if self.on_ground or self.over_tile:
