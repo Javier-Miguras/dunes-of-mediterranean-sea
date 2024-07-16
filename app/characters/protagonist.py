@@ -119,7 +119,7 @@ class Protagonist:
         tile_width, tile_height = 8, 8
         # Check right side of the protagonist
         if self.flip_x == False and tilemap.is_tile_solid(self.x + self.sprite.w, self.y + self.sprite.h // 2):
-            self.x = (self.x // tile_width) * tile_width
+            self.x = (self.x // tile_width - .1) * tile_width
         # Check left side of the protagonist
         elif self.flip_x == True and tilemap.is_tile_solid(self.x, self.y + self.sprite.h // 2):
             self.x = (self.x // tile_width + 1) * tile_width
